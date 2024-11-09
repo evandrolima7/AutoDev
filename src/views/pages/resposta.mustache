@@ -1,0 +1,70 @@
+{{>partials/header}}
+
+
+<section class="banner" style="background:{{color}}">
+     
+     <h1>{{text}} {{modelo}}</h1>
+        
+</section>
+<h2>{{subtext}} {{modelo}} disponiveis</h2>
+
+
+
+<button type="button" class="btn" style="background:{{corBtn}}; color:white; display:block; margin: auto;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Filtrar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+  <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+</svg>
+</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" 
+aria-hidden="true" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="filter-container">
+            <h2>Busca Avançada</h2>
+
+            <form form method="GET" action="/resposta" class="filter">
+                <label for="ano">Ano:</label>
+                <input type="number" id="ano" name="ano" placeholder="digite o ano do carro..." value={{nome}}>
+            
+                <label for="km">Km:</label>
+                <input type="number" id="km" name="km" placeholder="digite a quilometragem...">
+            
+                <label for="km">Preço:</label>
+                <input type="number" id="preco" name="preco" placeholder="digite o preço do carro...">
+                <input class="buscarBtn" type="submit" value="Buscar">
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+     
+    <div class="container list">
+    {{#list}}
+
+    <div class="item" >
+        <img style="{{border}};  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);" src="{{imagem}}" class="item--image" alt="Hatchback Image" />
+        <div class="item--name"> {{nome}}</div>
+        <div class="item--marca"><span>Marca:</span> {{marca}}</div>
+        <div class="item--color"><span>Cor:</span> {{cor}}</div>
+        <div class="item--ano"><span>Ano:</span> {{ano}}</div>
+        <div class="item--km"><span>Km:</span> {{km}}</div>
+        <div class="item--preco">R$ {{preco}}</div>
+    </div>
+    {{/list}}
+    </div>
+
+    
+</div>
+
+{{^list}}
+    <div class="container no-list">
+        <h2>Não foram encontrados resultados para a sua pesquisa.</h2>
+    </div>
+{{/list}}
+
+
+{{>partials/footer}}
