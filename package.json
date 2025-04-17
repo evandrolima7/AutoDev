@@ -53,13 +53,12 @@
     "copyfiles": "^2.4.1"
   },
   "scripts": {
-  "tsc": "tsc",
-  "copy-mustache": "copyfiles -u 1 src/**/*.mustache dist/",
-  "build": "npm run tsc && npm run copy-mustache && other-build-steps",
-  "start": "node dist/server.js",
-  "start-dev": "nodemon -e ts,json,mustache src/server.ts",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "nodemon -e ts,json,mustache src/server.ts",
+    "start": "node dist/server.js",
+    "postinstall": "npm run tsc && copyfiles -u 1 src/**/*.mustache dist/",
+    "tsc": "tsc"
+  },
   "author": "",
   "license": "ISC"
 }
